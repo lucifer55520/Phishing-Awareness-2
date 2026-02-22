@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Project: QR Security</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 500px;
+        }
+        h1 { color: #333; }
+        .message {
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .warning { background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Cybersecurity Demonstration</h1>
+        <p>This page is part of a student presentation on the dangers of Quishing (QR Phishing).</p>
+        <div id="result-box" class="message" style="display: none;"></div>
+    </div>
+
+    <script>
+        // Trigger the popup as soon as the page loads
+        window.onload = function() {
+            // The confirm() function creates the exact "OK" (Yes) and "Cancel" popup you asked for
+            let userAction = confirm("🚨 SECURITY WARNING 🚨\n\nYou have just scanned an untrusted QR code. If this were a real attack, your device could be compromised.\n\nClick 'OK' to simulate falling for the attack, or 'Cancel' to simulate backing out.");
+
+            let resultBox = document.getElementById('result-box');
+            resultBox.style.display = 'block';
+
+            // Safe handling of the user's choice (no infinite loops!)
+            if (userAction) {
+                resultBox.className = 'message warning';
+                resultBox.innerHTML = "You clicked OK. <br><br>You just got 'Quished!' Always verify the source of a QR code before trusting the link.";
+            } else {
+                resultBox.className = 'message success';
+                resultBox.innerHTML = "You clicked Cancel. <br><br>Great instincts! You successfully avoided the simulated trap.";
+            }
+        };
+    </script>
+
+</body>
+</html>
