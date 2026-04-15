@@ -3,65 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>College Project: QR Security</title>
+    <title>QR Phishing Awareness</title>
+
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f4f9;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
+            background-color: #f4f6f8;
             margin: 0;
-            text-align: center;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
             padding: 20px;
         }
-        .container {
-            background-color: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            max-width: 500px;
+
+        h1 {
+            text-align: center;
+            color: #333;
         }
-        h1 { color: #333; }
-        .message {
-            margin-top: 20px;
-            font-size: 1.2em;
-            font-weight: bold;
+
+        p {
+            text-align: center;
+            color: #555;
+        }
+
+        .card {
+            background: white;
             padding: 15px;
-            border-radius: 5px;
+            margin-top: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
-        .success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
-        .warning { background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; }
+
+        .message {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .warning {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 20px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
+
 <body>
 
     <div class="container">
-        <h1>Cybersecurity Demonstration</h1>
-        <p>This page is part of a student presentation on the dangers of Quishing (QR Phishing).</p>
-        <div id="result-box" class="message" style="display: none;"></div>
+        <h1>QR Phishing Awareness</h1>
+
+        <p>This project demonstrates the dangers of QR-based phishing attacks (Quishing).</p>
+
+        <div class="card">
+            <h3>⚠️ What is Quishing?</h3>
+            <p>Quishing is a type of phishing attack where malicious QR codes redirect users to harmful websites to steal data.</p>
+        </div>
+
+        <div class="card">
+            <h3>🚨 Common Risks</h3>
+            <ul>
+                <li>Fake login pages</li>
+                <li>Data theft (passwords, OTP)</li>
+                <li>Malware downloads</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>✅ Safety Tips</h3>
+            <ul>
+                <li>Verify the source of QR codes</li>
+                <li>Avoid scanning unknown codes</li>
+                <li>Check URLs before entering data</li>
+            </ul>
+        </div>
+
+        <button onclick="simulateAttack()">Simulate QR Attack</button>
+
+        <div id="result-box" class="message" style="display:none;"></div>
     </div>
 
     <script>
-        // Trigger the popup as soon as the page loads
-        window.onload = function() {
-            // The confirm() function creates the exact "OK" (Yes) and "Cancel" popup you asked for
-            let userAction = confirm("🚨 SECURITY WARNING 🚨\n\nYou have just scanned an untrusted QR code. If this were a real attack, your device could be compromised.\n\nClick 'OK' to simulate falling for the attack, or 'Cancel' to simulate backing out.");
+        function simulateAttack() {
+            let userAction = confirm(
+                "🚨 SECURITY WARNING 🚨\n\nYou scanned an untrusted QR code.\n\nAttackers can steal passwords, OTPs, or install malware.\n\nPress OK to simulate being tricked, or Cancel to stay safe."
+            );
 
             let resultBox = document.getElementById('result-box');
             resultBox.style.display = 'block';
 
-            // Safe handling of the user's choice (no infinite loops!)
             if (userAction) {
                 resultBox.className = 'message warning';
-                resultBox.innerHTML = "You clicked OK. <br><br>You just got 'Quished!' Always verify the source of a QR code before trusting the link.";
+                resultBox.innerHTML = "❌ You got 'Quished!'<br><br>Always verify QR sources before trusting them.";
             } else {
                 resultBox.className = 'message success';
-                resultBox.innerHTML = "You clicked Cancel. <br><br>Great instincts! You successfully avoided the simulated trap.";
+                resultBox.innerHTML = "✅ Great job! You avoided the attack.<br><br>Stay alert and always verify links.";
             }
-        };
+        }
     </script>
 
 </body>
