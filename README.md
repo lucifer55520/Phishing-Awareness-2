@@ -27,7 +27,7 @@ This project is built to:
 
 ## 📦 Installation (For Local Use)
 1. Clone the repository
-2. Open `index.html` in browser
+2. Open `index2.html` in browser
 
 ## 👨‍💻 Author
 Surya Biswas
