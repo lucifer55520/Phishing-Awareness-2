@@ -14,7 +14,7 @@ This project demonstrates the risks of QR-based phishing attacks (Quishing) thro
 - JavaScript
 
 ## 📱 Live Demo
-https://yourusername.github.io/your-repo-name/
+https://github.com/lucifer55520/Phishing-Awareness-2
 
 ## ⚠️ What is Quishing?
 Quishing (QR Phishing) is a cyber attack where attackers use malicious QR codes to redirect users to fake websites to steal sensitive data.
